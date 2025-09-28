@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Test</title>
+</head>
+<body>
+    <h1>Test RAG Systému</h1>
+    <div id="test-results"></div>
+    
+    <script src="database.js"></script>
+    <script src="rag-system.js"></script>
+    
+    <script>
+        // Test RAG systému
+        function runTests() {
+            const ragSystem = new RAGSystem(window.aiPowerData.knowledgeBase);
+            const results = document.getElementById('test-results');
+            
+            const testQueries = [
+                "Koľko stojí chatbot?",
+                "Aké sú výhody AI chatbotov?",
+                "Ako prebieha implementácia?",
+                "Môžete integrovať s CRM?",
+                "Potrebujem pomoc s údržbou",
+                "Chcem si rezervovať stretnutie",
+                "Ako môžem prispôsobiť chatbot?"
+            ];
+            
+            results.innerHTML = '<h2>Test Výsledky:</h2>';
+            
+            testQueries.forEach((query, index) => {
+                console.log(`\n=== TEST ${index + 1}: ${query} ===`);
+                const searchResults = ragSystem.searchRelevantContent(query, 2);
+                const context = ragSystem.buildContext(searchResults);
+                
+                const testDiv = document.createElement('div');
+                testDiv.style.marginBottom = '20px';
+                testDiv.style.border = '1px solid #ccc';
+                testDiv.style.padding = '10px';
+                
+                testDiv.innerHTML = `
+                    <h3>Dotaz: ${query}</h3>
+                    <p><strong>Nájdené výsledky:</strong> ${searchResults.length}</p>
+                    <p><strong>Zdroje:</strong> ${searchResults.map(r => r.title).join(', ')}</p>
+                    <p><strong>Skóre:</strong> ${searchResults.map(r => r.relevanceScore).join(', ')}</p>
+                    <details>
+                        <summary>Zobraz kontext</summary>
+                        <pre style="white-space: pre-wrap; background: #f5f5f5; padding: 10px;">${context}</pre>
+                    </details>
+                `;
+                
+                results.appendChild(testDiv);
+            });
+        }
+        
+        // Spustiť testy po načítaní
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

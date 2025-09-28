@@ -458,16 +458,24 @@ button:active {
 
   
 <script src="database.js"></script>
+<script src="rag-system.js"></script>
 
   <script>
     let chatHistory = [
       {
         role: "system",
         content: "Si skúsený a empatický AI asistent firmy AIPower. FIRMA AIPOWER POSKYTUJE LEN JEDNU SLUŽBU: Tvorbu AI chatbotov na mieru pre rôzne firmy a odvetvia. Ak používateľ položí otázku týkajúcu sa našej služby tvorby AI chatbotov, odpovedaj stručne a profesionálne podľa dopytu. Ak používateľ položí otázku o službe, ktorú neposkytujeme, odpovedz: Prepáčte, ale túto službu neposkytujeme. Špecializujeme sa výhradne na tvorbu AI chatbotov na mieru. Radi vám však pomôžeme s požiadavkami týkajúcimi sa AI chatbotov. Na všetky ostatné otázky, napríklad o pobočkách, dostupnosti, pozdravy alebo všeobecné témy odpovedaj neutrálne a priateľsky, nikdy nehovor, že si AI, odpovedaj vždy jednou alebo dvoma vetami."
-
-
       }
     ];
+
+    // Inicializácia RAG systému po načítaní databázy
+    let ragSystem = null;
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.aiPowerData && window.RAGSystem) {
+        ragSystem = new window.RAGSystem(window.aiPowerData.knowledgeBase);
+        console.log('RAG systém inicializovaný s', window.aiPowerData.knowledgeBase.length, 'záznamami');
+      }
+    });
 
     const chatbox = document.getElementById("chat-messages");
     const inputField = document.getElementById("user-input");
@@ -652,7 +660,7 @@ async function sendMessage() {
     }
   };
 
-  // Testovanie quick replies
+  // Testovanie quick replies najprv
   let localReply = null;
   for (const [category, config] of Object.entries(quickReplies)) {
     if (config.regex.test(normalizedMessage)) {
@@ -673,17 +681,39 @@ async function sendMessage() {
     return;
   }
 
-  appendMessage("AI POWER", "Píšem odpoveď...", "bot", true);
+  appendMessage("AI POWER", "Hľadám relevantné informácie...", "bot", true);
 
   try {
     await delay(800);
 
+    // RAG vyhľadávanie relevantného obsahu
+    let relevantContent = [];
+    let ragContext = '';
+    let sources = [];
+    let useRAG = false;
+
+    if (ragSystem) {
+      relevantContent = ragSystem.searchRelevantContent(message, 3);
+      if (relevantContent.length > 0) {
+        ragContext = ragSystem.buildContext(relevantContent);
+        sources = relevantContent.map(item => item.title);
+        useRAG = true;
+        console.log('Používam RAG s kontextom:', sources);
+      }
+    }
+
+    // API volanie s RAG kontextom
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ messages: chatHistory })
+      body: JSON.stringify({ 
+        messages: chatHistory,
+        useRAG: useRAG,
+        ragContext: ragContext,
+        sources: sources
+      })
     });
 
     if (!response.ok) {
@@ -691,7 +721,7 @@ async function sendMessage() {
     }
 
     const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content?.trim() || "Prepáč, neviem na to odpovedať.";
+    let reply = data.choices?.[0]?.message?.content?.trim() || "Prepáč, neviem na to odpovedať.";
 
     removeLastBotMessage();
     appendMessage("AI POWER", reply, "bot");
