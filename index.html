@@ -553,7 +553,7 @@ async function sendMessage() {
     pricing: {
       regex: /(cena|ko[l]?ko\s+stoj[ií]|cenn[ií]k|ceny|sluzb[ya]?|ponuka\s+sluzieb)/i,
       handler: () => {
-        return `💰 **PRESNÉ CENY:**<br><br>• **Základný balík:** 300€ jednorazovo + 50€/mesiac<br>• **Prémiové funkcie:** 50€/funkcia jednorazovo<br><br>Základný balík: chatbot na webe, FAQ, 24/7 dostupnosť, zber kontaktov, údržba.<br><br>📅 <a href="${window.aiPowerData.company.calendly}" target="_blank">Rezervovať konzultáciu</a>`;
+        return `💰 **PRESNÉ CENY:**<br><br>• **Základný balík:** 300€ jednorazovo + 50€/mesiac<br>• **Prémiové funkcie:** 50€/funkcia jednorazovo<br><br>Základný balík: chatbot na webe, FAQ, 24/7 dostupnosť, zber kontaktov, údržba.<br><br>📅 <a href="${window.aiPowerData.company.calendly}" target="_blank" style="color: #0066cc; text-decoration: underline; font-weight: bold;">🔗 REZERVOVAŤ KONZULTÁCIU</a>`;
       }
     },
     
@@ -597,7 +597,7 @@ async function sendMessage() {
       regex: /(stretnutie|meeting|rezervacia|calendly|zavolat\s+si|book|objednat|termin|zarezervovat)/i,
       handler: () => {
         const link = window.aiPowerData.company.calendly;
-        return `📅 **Rezervácia stretnutia:**<br><br><a href="${link}" target="_blank">🔗 Rezervovať bezplatnú konzultáciu</a><br><br>Počas stretnutia si prediskutujeme vaše potreby a ukážeme demo!`;
+        return `📅 **Rezervácia stretnutia:**<br><br><a href="${link}" target="_blank" style="color: #0066cc; text-decoration: underline;">🔗 REZERVOVAŤ BEZPLATNÚ KONZULTÁCIU</a><br><br>Kliknite na odkaz vyššie pre priamu rezerváciu. 30-minútový online hovor.`;
       }
     },
 
@@ -693,8 +693,20 @@ async function sendMessage() {
       msgDiv.classList.add("message", role);
       if (isTemp) msgDiv.classList.add("temp");
 
-      // Tu sa spracuje **text** na <strong>text</strong>
-      const formattedMessage = message.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      // Spracovanie **text** na <strong>text</strong>
+      let formattedMessage = message.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      
+      // Automatické vytvorenie hyperlinkov z Calendly URL (ak nie sú už hyperlinky)
+      formattedMessage = formattedMessage.replace(
+        /https:\/\/calendly\.com\/aipoweragency\/new-meeting\?month=2025-08(?![^<]*>)/g,
+        '<a href="https://calendly.com/aipoweragency/new-meeting?month=2025-08" target="_blank" style="color: #0066cc; text-decoration: underline; font-weight: bold;">🔗 REZERVOVAŤ KONZULTÁCIU</a>'
+      );
+      
+      // Backup - ak sa niektore URL nezachytili
+      formattedMessage = formattedMessage.replace(
+        /(https?:\/\/[^\s<]+)(?![^<]*>)/g,
+        '<a href="$1" target="_blank" style="color: #0066cc; text-decoration: underline;">$1</a>'
+      );
 
       msgDiv.innerHTML = formattedMessage;
 

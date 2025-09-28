@@ -71,8 +71,8 @@ window.aiPowerData = {
     {
       id: "booking-consultation",
       category: "booking",
-      title: "Rezervácia konzultácie",
-      content: "Môžete si rezervovať bezplatnú konzultáciu cez Calendly: https://calendly.com/aipoweragency/new-meeting?month=2025-08. Konzultácia je 30-minútový online hovor, kde prediskutujeme vaše potreby a predstavíme možnosti AI Power platformy.",
+      title: "Rezervácia konzultácie", 
+      content: "Môžete si rezervovať bezplatnú konzultáciu: <a href='https://calendly.com/aipoweragency/new-meeting?month=2025-08' target='_blank'>Rezervovať konzultáciu</a>. Konzultácia je 30-minútový online hovor, kde prediskutujeme vaše potreby a predstavíme možnosti AI Power platformy.",
       keywords: ["rezervácia", "konzultácia", "Calendly", "stretnutie", "bezplatné", "30 minút", "online hovor"]
     },
     {

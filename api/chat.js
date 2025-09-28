@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: "Qwen/Qwen3-235B-A22B-Instruct-2507-tput",
         messages: enhancedMessages,
-        temperature: 0.1, // Veľmi nízka teplota pre presnejšie odpovede
+        temperature: 0.4, // Vyvážená teplota pre prirodzenejšie odpovede
         max_tokens: 500,
         top_p: 0.8,     // Obmedzenie variability
         stop: null,
