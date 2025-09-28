@@ -122,7 +122,7 @@ class RAGSystem {
       .map(item => `**${item.title}:**\n${item.content}`)
       .join('\n\n');
     
-    return `Na základe našej databázy znalostí o AI Power:\n\n${context}\n\nOdpovedaj na základe týchto informácií a buď konkrétny. Ak sa otázka týka cien, uveď presné sumy. Ak sa týka procesu, uveď konkrétne kroky.`;
+    return `PRESNÉ INFORMÁCIE O AI POWER (používaj LEN tieto fakty):\n\n${context}\n\nINŠTRUKCIE: Odpovedaj presne podľa týchto informácií. NEPRÍDÁVAJ žiadne vlastné detaily. Ak informácia nie je uvedená vyššie, povedz že nemáš presné údaje. PRESNÉ CENY: €300 + €50/mesiac, prémiové €50/funkcia - NIKDY iné sumy.`;
   }
 
   // Získanie kontextu pre špecifickú kategóriu

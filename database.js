@@ -30,8 +30,8 @@ window.aiPowerData = {
       id: "chatbot-benefits",
       category: "benefits",
       title: "Výhody AI chatbotov",
-      content: "AI chatbot vám poskytne 24+ hodín dostupnosti denne, dokáže generovať 100+ možných leadov a zabezpečiť 1k+ automatizovaných konverzií denne. Konkrétne výhody: Ušetríte čas a peniaze - zamestnanci sa môžu venovať dôležitejším úlohám. Spokojní zákazníci 24/7 - okamžité odpovede kedykoľvek. Menej práce pre tím. Viac predajov - rýchle odpovede = spokojní zákazníci = viac objednávok. Lepšia povesť firmy. Nižšie náklady - jeden chatbot zvládne prácu niekoľkých ľudí.",
-      keywords: ["výhody", "benefits", "prečo", "24/7", "leady", "konverzie", "úspora", "spokojnosť", "predaje", "náklady"]
+      content: "AI chatbot poskytuje: 24 hodín dostupnosti denne, dokáže generovať 100+ leadov denne, zabezpečuje 1000+ automatizovaných konverzií denne. Konkrétne výhody: ušetríte čas zamestnancov, okamžité odpovede 24/7, viac predajov, lepšia povesť firmy, nižšie náklady. Jeden chatbot zvládne prácu niekoľkých ľudí.",
+      keywords: ["výhody", "24/7", "100 leadov", "1000 konverzií", "úspora", "okamžité odpovede", "viac predajov"]
     },
     {
       id: "implementation-process",
@@ -72,8 +72,8 @@ window.aiPowerData = {
       id: "booking-consultation",
       category: "booking",
       title: "Rezervácia konzultácie",
-      content: "Môžete si rezervovať bezplatnú konzultáciu cez náš Calendly systém na https://calendly.com/aipoweragency/new-meeting?month=2025-08. Počas konzultácie prediskutujeme vaše potreby, ukážeme demo a navrhneme riešenie presne pre vás.",
-      keywords: ["rezervácia", "konzultácia", "Calendly", "stretnutie", "demo", "bezplatné", "poradenstvo"]
+      content: "Môžete si rezervovať bezplatnú konzultáciu cez Calendly: https://calendly.com/aipoweragency/new-meeting?month=2025-08. Konzultácia je 30-minútový online hovor, kde prediskutujeme vaše potreby a predstavíme možnosti AI Power platformy.",
+      keywords: ["rezervácia", "konzultácia", "Calendly", "stretnutie", "bezplatné", "30 minút", "online hovor"]
     },
     {
       id: "company-info",
@@ -134,16 +134,16 @@ window.aiPowerData = {
     {
       id: "premium-features-detailed",
       category: "pricing",
-      title: "Detailný popis prémiových funkcií",
-      content: "Prémiové funkcie za €50/funkcia jednorazovo: 1) Vyhľadávanie vo vašej databáze - bot nájde konkrétne produkty/služby (napr. dostupné autá), 2) Pokročilé integrácie - prepojenie s Google Sheets, CRM, rezervačným systémom, 3) Multijazyčný režim - napr. slovenčina + angličtina, 4) Funkcie podľa vašej potreby - čokoľvek, čo potrebujete pre svoj biznis.",
-      keywords: ["prémiové funkcie", "€50", "databáza", "vyhľadávanie", "integrácie", "multijazyčný", "na mieru", "CRM", "Google Sheets"]
+      title: "Prémiové funkcie za 50 eur",
+      content: "Každá prémiová funkcia stojí 50 eur jednorazovo: 1) Vyhľadávanie vo vašej databáze, 2) Integrácie s Google Sheets, CRM, rezervačným systémom, 3) Multijazyčný režim, 4) Ďalšie funkcie podľa potreby. Prémiové funkcie sa platí jednorazovo pri implementácii.",
+      keywords: ["50 eur", "prémiové", "jednorazovo", "databáza", "integrácie", "multijazyčný", "CRM", "Google Sheets"]
     },
     {
       id: "consultation-process",
       category: "booking",
-      title: "Ako prebieha konzultácia",
-      content: "Konzultácia prebieha formou 30-minútového online hovoru, kde si vypočujeme vaše potreby a predstavíme možnosti AI Power platformy. Počas stretnutia vytvoríme spolu stratégiu pre váš chatbot, prediskutujeme špecifické požiadavky a ukážeme konkrétne príklady. Konzultácia je bezplatná a nezáväzná.",
-      keywords: ["konzultácia", "30 minút", "online hovor", "bezplatná", "nezáväzná", "stratégia", "požiadavky", "príklady"]
+      title: "Čo sa deje počas konzultácie",
+      content: "Konzultácia je 30-minútový online hovor. Počas hovoru: 1) Vypočujeme si vaše potreby, 2) Predstavíme možnosti AI Power platformy, 3) Prediskutujeme špecifické požiadavky pre váš chatbot, 4) Navrhneme stratégiu. Konzultácia je bezplatná a nezáväzná.",
+      keywords: ["30 minút", "online hovor", "bezplatná", "potreby", "možnosti", "požiadavky", "stratégia"]
     },
     {
       id: "company-mission",

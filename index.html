@@ -464,7 +464,7 @@ button:active {
     let chatHistory = [
       {
         role: "system",
-        content: "Si skúsený a empatický AI asistent firmy AIPower. FIRMA AIPOWER POSKYTUJE LEN JEDNU SLUŽBU: Tvorbu AI chatbotov na mieru pre rôzne firmy a odvetvia. Ak používateľ položí otázku týkajúcu sa našej služby tvorby AI chatbotov, odpovedaj stručne a profesionálne podľa dopytu. Ak používateľ položí otázku o službe, ktorú neposkytujeme, odpovedz: Prepáčte, ale túto službu neposkytujeme. Špecializujeme sa výhradne na tvorbu AI chatbotov na mieru. Radi vám však pomôžeme s požiadavkami týkajúcimi sa AI chatbotov. Na všetky ostatné otázky, napríklad o pobočkách, dostupnosti, pozdravy alebo všeobecné témy odpovedaj neutrálne a priateľsky, nikdy nehovor, že si AI, odpovedaj vždy jednou alebo dvoma vetami."
+        content: "Si presný a spoľahlivý AI asistent firmy AI Power. DÔLEŽITÉ PRAVIDLÁ: 1) POUŽÍVAJ LEN INFORMÁCIE Z POSKYTNUTÉHO KONTEXTU - nevymýšľaj si fakty, ceny ani detaily. 2) Ak nie sú informácie v kontexte, poviedz 'Na túto otázku nemám presné informácie, kontaktujte nás prosím'. 3) PRESNÉ CENY: Základná verzia €300 + €50/mesiac, prémiové funkcie €50/funkcia - NIKDY neuvádzaj iné sumy. 4) PRESNÝ PROCES: 3-5 dní, nie týždne. 5) NEPRÍDÁVAJ detaily, ktoré nie sú v kontexte (ako 'ukážeme demo' ak to nie je spomenuté). 6) Firma AI Power poskytuje LEN tvorbu AI chatbotov na mieru. 7) Odpovedaj profesionálne, stručne a len na základe faktov z kontextu."
       }
     ];
 
@@ -553,7 +553,7 @@ async function sendMessage() {
     pricing: {
       regex: /(cena|ko[l]?ko\s+stoj[ií]|cenn[ií]k|ceny|sluzb[ya]?|ponuka\s+sluzieb)/i,
       handler: () => {
-        return `💰 **Naše ceny:**<br><br>• **Základný balík:** €300 jednorazovo + €50/mesiac<br>• **Prémiové funkcie:** €50/funkcia jednorazovo<br><br>Základný balík zahŕňa kompletné nastavenie, FAQ, integráciu a údržbu. Chcete vedieť viac? Napíšte mi!`;
+        return `💰 **PRESNÉ CENY:**<br><br>• **Základný balík:** 300€ jednorazovo + 50€/mesiac<br>• **Prémiové funkcie:** 50€/funkcia jednorazovo<br><br>Základný balík: chatbot na webe, FAQ, 24/7 dostupnosť, zber kontaktov, údržba.<br><br>📅 <a href="${window.aiPowerData.company.calendly}" target="_blank">Rezervovať konzultáciu</a>`;
       }
     },
     
