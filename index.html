@@ -8,6 +8,39 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+:root {
+  --gradient-primary: linear-gradient(135deg, #00D9FF 0%, #7C3AED 100%);
+}
+
+/* Gradient hyperlink styles */
+.message.bot a,
+.message a {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.message.bot a:hover,
+.message a:hover {
+  text-decoration: underline;
+  transform: scale(1.02);
+}
+
+/* Fallback pre staršie prehliadače */
+@supports not (-webkit-background-clip: text) {
+  .message.bot a,
+  .message a {
+    color: #00D9FF;
+    background: none;
+    -webkit-text-fill-color: initial;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -553,7 +586,7 @@ async function sendMessage() {
     pricing: {
       regex: /(cena|ko[l]?ko\s+stoj[ií]|cenn[ií]k|ceny|sluzb[ya]?|ponuka\s+sluzieb)/i,
       handler: () => {
-        return `💰 **PRESNÉ CENY:**<br><br>• **Základný balík:** 300€ jednorazovo + 50€/mesiac<br>• **Prémiové funkcie:** 50€/funkcia jednorazovo<br><br>Základný balík: chatbot na webe, FAQ, 24/7 dostupnosť, zber kontaktov, údržba.<br><br>📅 <a href="${window.aiPowerData.company.calendly}" target="_blank" style="color: #0066cc; text-decoration: underline; font-weight: bold;">🔗 REZERVOVAŤ KONZULTÁCIU</a>`;
+        return `💰 **PRESNÉ CENY:**<br><br>• **Základný balík:** 300€ jednorazovo + 50€/mesiac<br>• **Prémiové funkcie:** 50€/funkcia jednorazovo<br><br>Základný balík: chatbot na webe, FAQ, 24/7 dostupnosť, zber kontaktov, údržba.<br><br>📅 <a href="${window.aiPowerData.company.calendly}" target="_blank">🔗 REZERVOVAŤ KONZULTÁCIU</a>`;
       }
     },
     
@@ -597,7 +630,7 @@ async function sendMessage() {
       regex: /(stretnutie|meeting|rezervacia|calendly|zavolat\s+si|book|objednat|termin|zarezervovat)/i,
       handler: () => {
         const link = window.aiPowerData.company.calendly;
-        return `📅 **Rezervácia stretnutia:**<br><br><a href="${link}" target="_blank" style="color: #0066cc; text-decoration: underline;">🔗 REZERVOVAŤ BEZPLATNÚ KONZULTÁCIU</a><br><br>Kliknite na odkaz vyššie pre priamu rezerváciu. 30-minútový online hovor.`;
+        return `📅 **Rezervácia stretnutia:**<br><br><a href="${link}" target="_blank">🔗 REZERVOVAŤ BEZPLATNÚ KONZULTÁCIU</a><br><br>Kliknite na odkaz vyššie pre priamu rezerváciu. 30-minútový online hovor.`;
       }
     },
 
@@ -699,13 +732,13 @@ async function sendMessage() {
       // Automatické vytvorenie hyperlinkov z Calendly URL (ak nie sú už hyperlinky)
       formattedMessage = formattedMessage.replace(
         /https:\/\/calendly\.com\/aipoweragency\/new-meeting\?month=2025-08(?![^<]*>)/g,
-        '<a href="https://calendly.com/aipoweragency/new-meeting?month=2025-08" target="_blank" style="color: #0066cc; text-decoration: underline; font-weight: bold;">🔗 REZERVOVAŤ KONZULTÁCIU</a>'
+        '<a href="https://calendly.com/aipoweragency/new-meeting?month=2025-08" target="_blank">🔗 REZERVOVAŤ KONZULTÁCIU</a>'
       );
       
       // Backup - ak sa niektore URL nezachytili
       formattedMessage = formattedMessage.replace(
         /(https?:\/\/[^\s<]+)(?![^<]*>)/g,
-        '<a href="$1" target="_blank" style="color: #0066cc; text-decoration: underline;">$1</a>'
+        '<a href="$1" target="_blank">$1</a>'
       );
 
       msgDiv.innerHTML = formattedMessage;
