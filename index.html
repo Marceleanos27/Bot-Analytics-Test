@@ -553,111 +553,54 @@ async function sendMessage() {
     pricing: {
       regex: /(cena|ko[l]?ko\s+stoj[ií]|cenn[ií]k|ceny|sluzb[ya]?|ponuka\s+sluzieb)/i,
       handler: () => {
-        const sluzby = window.aiPowerData.sluzby
-          .map(s => `• ${s.nazov}: ${s.cena}`)
-          .join("\n");
-        return `Naše služby a ich ceny:\n${sluzby}`.replace(/\n/g, "<br>");
+        return `💰 **Naše ceny:**<br><br>• **Základný balík:** €300 jednorazovo + €50/mesiac<br>• **Prémiové funkcie:** €50/funkcia jednorazovo<br><br>Základný balík zahŕňa kompletné nastavenie, FAQ, integráciu a údržbu. Chcete vedieť viac? Napíšte mi!`;
       }
     },
     
     contact: {
       regex: /(kontakt|telefon|tvoj[ea]?\s+(cislo|kontakt)|e?-?mail|gmail|ciselko)/i,
       handler: () => {
-        const k = window.aiPowerData.kontakty;
-        return `Kontakt na nás:\n📞 ${k.telefon}\n📧 ${k.email}\n🌐 ${k.web}`;
+        const c = window.aiPowerData.company;
+        return `📞 **Kontakt na nás:**<br><br>📞 ${c.phone}<br>📧 ${c.email}<br>🌐 ${c.website}`;
       }
     },
     
     address: {
       regex: /(adresa|kde\s+(ste|sa\s+(nachadza|nachadzate))|sidli|lokacia|mapa|kde\s+vas\s+(najdem|najdeme))/i,
-      handler: () => `Naša hlavná adresa je:\n${window.aiPowerData.sidlo}`
+      handler: () => `📍 **Naša lokácia:**<br><br>${window.aiPowerData.company.location}`
     },
     
     history: {
       regex: /(zalozena?|kedy\s+vznikla|rok\s+vzniku|historia\s+firmy)/i,
-      handler: () => `Firma AI Power bola založená v roku ${window.aiPowerData.zalozena}.`
+      handler: () => `🏢 **História firmy:**<br><br>Firma AI Power bola založená v roku ${window.aiPowerData.company.founded} zakladateľom ${window.aiPowerData.company.founder}.`
     },
     
     management: {
       regex: /(konatel|zakladatel|kto\s+(zalozil|ju\s+zalozil)|founder|riaditel)/i,
       handler: () => {
-        if (normalizedMessage.includes('riaditel')) {
-          return `Výkonný riaditeľ: ${window.aiPowerData.vykonnyriaditel.join(", ")}.`;
-        }
-        return `Zakladateľ: ${window.aiPowerData.zakladatelia.join(", ")}.`;
+        return `👨‍💼 **Zakladateľ:** ${window.aiPowerData.company.founder}<br><br>Viac informácií o našej firme? Napíšte mi!`;
       }
     },
     
-    branches: {
-      regex: /(pobocka|najblizsia\s+pobocka|predajna)/i,
-      handler: () => {
-        const p = window.aiPowerData.pobočky
-          .map(x => `• ${x.mesto}: ${x.adresa}`)
-          .join("\n");
-        return `Naše pobočky:\n${p}`;
-      }
-    },
+
     
     hours: {
       regex: /(pracovne\s+hodiny|otvorene|kedy\s+(mozem\s+prist|mate\s+otvorene)|otvaracie\s+hodiny)/i,
       handler: () => {
-        const h = window.aiPowerData.pracovne_hodiny;
-        return ("Pracovné hodiny:\n" +
-          Object.entries(h)
-            .map(([den, cas]) => `${den.charAt(0).toUpperCase()+den.slice(1)}: ${cas}`)
-            .join("\n"))
-          .replace(/\n/g, "<br>");
+        const h = window.aiPowerData.workingHours;
+        return `🕐 **Pracovné hodiny:**<br><br>Po-Št: ${h.monday}<br>Piatok: ${h.friday}<br>Víkend: ${h.weekend}`;
       }
     },
-    
-    partners: {
-      regex: /(partner|spolupraca|s\s+kym\s+spolupracujete)/i,
-      handler: () => {
-        return window.aiPowerData.partnerstvá.length
-          ? (`Naši partneri:\n• ${window.aiPowerData.partnerstvá.join("\n• ")}`).replace(/\n/g, "<br>")
-          : "Momentálne nemáme officiálne partnerstvá.";
-      }
-    },
-    
-    description: {
-      regex: /(popis|co\s+robi|zaobera|funkcia|profil\s+firmy)/i,
-      handler: () => window.aiPowerData.popis
-    },
-    
-    philosophy: {
-      regex: /(filozofia|vizia|hodnoty|poslanie)/i,
-      handler: () => window.aiPowerData.filozofia
-    },
-    
-    sustainability: {
-      regex: /(udrzatelnost|ekologicke|zelene|csr)/i,
-      handler: () => {
-        const u = window.aiPowerData.udržateľnosť || window.aiPowerData.udrzatelnost;
-        return (`Opatrenia udržateľnosti:\n• ${u.opatrenia.join("\n• ")}`).replace(/\n/g, "<br>");
-      }
-    },
-    
-    employees: {
-      regex: /(pocet\s+zamestnancov|ko[l]?ko\s+(vas\s+je|zamestnancov|mate\s+zamestnancov))/i,
-      handler: () => `Momentálne máme ${window.aiPowerData.pocet_zamestnancov} zamestnancov.`
-    },
+
     
     booking: {
       regex: /(stretnutie|meeting|rezervacia|calendly|zavolat\s+si|book|objednat|termin|zarezervovat)/i,
       handler: () => {
-        const link = window.aiPowerData.booking.calendly;
-        return `Tu si môžeš rezervovať stretnutie: <a href="${link}" target="_blank">Rezervovať cez Calendly</a>`;
+        const link = window.aiPowerData.company.calendly;
+        return `📅 **Rezervácia stretnutia:**<br><br><a href="${link}" target="_blank">🔗 Rezervovať bezplatnú konzultáciu</a><br><br>Počas stretnutia si prediskutujeme vaše potreby a ukážeme demo!`;
       }
     },
-    
-    research: {
-      regex: /(r&d|vyskum|vyvoj|r\s+and\s+d)/i,
-      handler: () => {
-        return window.aiPowerData.r_and_d
-          ? "Áno, venujeme sa aj výskumu a vývoju AI riešení."
-          : "Nie, momentálne nemáme vlastné R&D oddelenie.";
-      }
-    }
+
   };
 
   // Testovanie quick replies najprv

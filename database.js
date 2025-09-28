@@ -1,57 +1,28 @@
 // database.js
-// Kompletná databáza informácií o spoločnosti AI Power
+// AI Power Knowledge Base - Optimalizovaná databáza pre RAG systém
 
 window.aiPowerData = {
-  meno: "AI Power",
-  zalozena: 2025,
-  zakladatelia: ["Marcel Lehocky"],
-  vykonnyriaditel: ["Neuvedené"],
-  sidlo: "Bratislava, Slovensko",
-  pobočky: [
-    { mesto: "Bratislava", adresa: "Slovensko" }
-  ],
-  segmenty: ["AI Chatboty", "Automatizácia", "Digitálni asistenti"],
-  popis: "Slovenská agentúra špecializovaná na tvorbu AI chatbotov na mieru. Vytvára inteligentných asistentov, ktorí hovoria vaším jazykom a poznajú vaše podnikanie.",
-  sluzby: [
-    {
-      nazov: "AI Chatbot na mieru",
-      cena: "€300 jednorazovo + €50 / mesiac",
-      popis: "Základná verzia AI chatbota pre váš web: odpovede na najčastejšie otázky, 24/7 dostupnosť, zber kontaktov, údržba a drobné úpravy."
-    },
-    {
-      nazov: "Voliteľné prémiové funkcie",
-      cena: "Jednorazovo €50 / funkcia",
-      popis: "Možnosti rozšírenia: vyhľadávanie vo vašej databáze, pokročilé integrácie (Google Sheets, CRM, rezervačný systém), multijazyčný režim, ďalšie funkcie podľa potrieb."
-    }
-  ],
-  kontakty: {
-    web: "https://www.aipower.site",
+  // Základné firemné informácie
+  company: {
+    name: "AI Power",
+    founded: 2025,
+    founder: "Marcel Lehocky",
+    location: "Bratislava, Slovensko",
+    website: "https://www.aipower.site",
     email: "info@aipower.site",
-    telefon: "+421 904 603 171"
-  },
-  pracovne_hodiny: {
-    pondelok: "8:00–17:00",
-    utorok: "8:00–17:00",
-    streda: "8:00–17:00",
-    stvrtok: "8:00–17:00",
-    piatok: "8:00–16:00",
-    sobota: "zatvorené",
-    nedela: "zatvorené"
-  },
-  booking: {
+    phone: "+421 904 603 171",
     calendly: "https://calendly.com/aipoweragency/new-meeting?month=2025-08"
   },
-  partnerstvá: [],
-  filozofia: "Ušetriť firmám čas a peniaze prostredníctvom inteligentných chatbotov a zlepšiť spokojnosť zákazníkov.",
-  udržateľnosť: {
-    opatrenia: [
-      "Digitálne procesy – minimalizácia papierovej administratívy",
-      "Cloudové riešenia s nízkou spotrebou energie"
-    ]
+  
+  // Pracovné hodiny (zachované pre quick replies)
+  workingHours: {
+    monday: "8:00–17:00",
+    tuesday: "8:00–17:00", 
+    wednesday: "8:00–17:00",
+    thursday: "8:00–17:00",
+    friday: "8:00–16:00",
+    weekend: "zatvorené"
   },
-  GDPR: true,
-  pocet_zamestnancov: "Neuvedené",
-  r_and_d: true,
   
   // RAG Knowledge Base
   knowledgeBase: [
@@ -59,22 +30,22 @@ window.aiPowerData = {
       id: "chatbot-benefits",
       category: "benefits",
       title: "Výhody AI chatbotov",
-      content: "AI chatboty poskytujú 24/7 dostupnosť, znižujú náklady na zákaznícky servis, zlepšujú spokojnosť zákazníkov a umožňujú automatizáciu rutinných úloh. Chatbot dokáže odpovedať na základné otázky okamžite, čím šetrí čas vašim zamestnancom aj zákazníkom.",
-      keywords: ["výhody", "benefits", "prečo", "dôvody", "automatizácia", "úspora", "24/7", "dostupnosť", "spokojnosť"]
+      content: "AI chatbot vám poskytne 24+ hodín dostupnosti denne, dokáže generovať 100+ možných leadov a zabezpečiť 1k+ automatizovaných konverzií denne. Konkrétne výhody: Ušetríte čas a peniaze - zamestnanci sa môžu venovať dôležitejším úlohám. Spokojní zákazníci 24/7 - okamžité odpovede kedykoľvek. Menej práce pre tím. Viac predajov - rýchle odpovede = spokojní zákazníci = viac objednávok. Lepšia povesť firmy. Nižšie náklady - jeden chatbot zvládne prácu niekoľkých ľudí.",
+      keywords: ["výhody", "benefits", "prečo", "24/7", "leady", "konverzie", "úspora", "spokojnosť", "predaje", "náklady"]
     },
     {
       id: "implementation-process",
       category: "process", 
       title: "Proces implementácie chatbota",
-      content: "Implementácia prebieha v 5 krokoch: 1) Analýza vašich potrieb a častých otázok zákazníkov, 2) Návrh konverzačných tokov a scenárov, 3) Vývoj a testovanie chatbota, 4) Integrácia na váš web, 5) Školenie a priebežná údržba. Celý proces trvá 1-2 týždne.",
-      keywords: ["proces", "implementácia", "kroky", "ako", "postup", "inštalácia", "nastavenie", "integrácia"]
+      content: "Celý proces trvá len 3-5 dní: 1) Rezervácia 30-minútového online meetingu, 2) Vytvorenie demo bota s vašimi základnými informáciami (2-4 hodiny), 3) Postupné upravovanie funkcií podľa vašich požiadaviek (iteratívny proces), 4) Finalizácia a testovanie (finálne ladenie), 5) Integrácia na web jedným riadkom kódu <script src='aipower.site/bot/YOUR_ID'></script>. Od prvého kontaktu po funkčný chatbot len za 3-5 dní!",
+      keywords: ["proces", "implementácia", "kroky", "ako", "postup", "3-5 dní", "rýchlo", "jednoducho", "demo", "meeting"]
     },
     {
       id: "pricing-details",
       category: "pricing",
       title: "Podrobnosti o cenách a balíkoch",
-      content: "Základný balík za €300 jednorazovo + €50/mesiac zahŕňa: kompletné nastavenie chatbota, zapracovanie vašich FAQ, integráciu na web, mesačnú údržbu a drobné úpravy. Prémiové funkcie ako CRM integrácia, Google Sheets prepojenie, rezervačný systém alebo multijazyčnosť sú za €50/funkcia jednorazovo.",
-      keywords: ["cena", "pricing", "koľko", "balík", "zahŕňa", "mesačne", "jednorazovo", "prémiové", "funkcie"]
+      content: "Základná verzia za €300 jednorazový poplatok za vytvorenie + €50/mesiac za poskytovanie a hostovanie služby. Ideálne riešenie pre firmy, ktoré chcú okamžitú komunikáciu so zákazníkmi. Zahŕňa: Chatbot na mieru na vašom webe, odpovede na najčastejšie otázky, 24/7 dostupnosť (odpovede mimo pracovnej doby), zber kontaktov a dopytov od zákazníkov, pravidelnú údržbu a drobné úpravy.",
+      keywords: ["€300", "€50/mesiac", "základná verzia", "hostovanie", "okamžitá komunikácia", "24/7", "kontakty", "údržba"]
     },
     {
       id: "technical-integration",
@@ -103,6 +74,97 @@ window.aiPowerData = {
       title: "Rezervácia konzultácie",
       content: "Môžete si rezervovať bezplatnú konzultáciu cez náš Calendly systém na https://calendly.com/aipoweragency/new-meeting?month=2025-08. Počas konzultácie prediskutujeme vaše potreby, ukážeme demo a navrhneme riešenie presne pre vás.",
       keywords: ["rezervácia", "konzultácia", "Calendly", "stretnutie", "demo", "bezplatné", "poradenstvo"]
+    },
+    {
+      id: "company-info",
+      category: "company",
+      title: "O spoločnosti AI Power",
+      content: "AI Power je slovenská agentúra založená v roku 2025 Marcelom Lehockým. Špecializujeme sa výhradne na tvorbu AI chatbotov na mieru pre rôzne firmy a odvetvia. Sídlime v Bratislave a naša filozofia je ušetriť firmám čas a peniaze prostredníctvom inteligentných chatbotov.",
+      keywords: ["o nás", "firma", "spoločnosť", "kto sme", "história", "založená", "Marcel Lehocky", "Bratislava"]
+    },
+    {
+      id: "contact-info",
+      category: "contact",
+      title: "Kontaktné informácie",
+      content: "Môžete nás kontaktovať na telefónnom čísle +421 904 603 171, emailom na info@aipower.site alebo navštívte našu webstránku https://www.aipower.site. Pracujeme Po-Št 8:00-17:00, v piatok 8:00-16:00.",
+      keywords: ["kontakt", "telefón", "email", "web", "adresa", "pracovné hodiny", "kedy", "otvorené"]
+    },
+    {
+      id: "services-overview",
+      category: "services",
+      title: "Naše služby - komplexný prehľad",
+      content: "Poskytujeme jedinú službu - tvorbu AI chatbotov na mieru. Základný balík za €300 + €50/mesiac zahŕňa kompletné nastavenie, FAQ, integráciu a údržbu. Dodatočné prémiové funkcie (CRM, Google Sheets, rezervácie, multijazyčnosť) za €50/funkcia. Celý proces od analýzy po spustenie trvá 1-2 týždne.",
+      keywords: ["služby", "čo robíme", "ponuka", "balíky", "čo zahŕňa", "kompletný", "prehľad"]
+    },
+    {
+      id: "competitive-advantages",
+      category: "advantages",
+      title: "Naše konkurenčné výhody",
+      content: "Vytvárame chatboty, ktoré hovoria vaším jazykom a poznajú vaše podnikanie. Každý chatbot je na mieru, nie template riešenie. Poskytujeme kompletnú podporu od návrhu po údržbu, slovenský prístup k zákazníkom a rýchlu implementáciu do 2 týždňov.",
+      keywords: ["výhody", "prečo my", "na mieru", "slovensky", "rýchlo", "osobný prístup", "nie template"]
+    },
+    {
+      id: "target-clients",
+      category: "clients",
+      title: "Pre koho sú naše chatboty",
+      content: "Naše AI chatboty sú ideálne pre malé a stredné firmy, e-shopy, služby, zdravotnícke zariadenia, realitné kancelárie, právnické firmy a akúkoľvek firmu, ktorá chce zlepšiť zákaznícky servis a ušetriť čas na rutinných otázkach.",
+      keywords: ["pre koho", "klienti", "firmy", "e-shop", "služby", "zdravotníctvo", "reality", "právnici"]
+    },
+    {
+      id: "success-stories",
+      category: "portfolio",
+      title: "Príklady úspešných implementácií",
+      content: "Naše chatboty pomohli firmám znížiť počet telefonátov o 60%, zlepšiť dostupnosť zákazníckeho servisu na 24/7 a automatizovať rezervácie termínov. Klienti oceňujú rýchle odpovede a profesionálny prístup našich AI asistentov.",
+      keywords: ["úspechy", "výsledky", "príklady", "referencie", "60%", "24/7", "automatizácia", "rezervácie"]
+    },
+    {
+      id: "integration-simplicity",
+      category: "technical",
+      title: "Jednoduchá integrácia na web",
+      content: "Integrácia chatbota na váš web je extrémne jednoduchá - stačí jeden riadok kódu: <script src='aipower.site/bot/YOUR_ID'></script>. Vloženie trvá len 5 minút a chatbot je okamžite funkčný. Nepotrebujete žiadne technické znalosti ani komplikované nastavenia.",
+      keywords: ["integrácia", "jednoduché", "jeden riadok", "script", "5 minút", "web", "okamžite", "bez technických znalostí"]
+    },
+    {
+      id: "timeline-speed",
+      category: "process",
+      title: "Rýchlosť dodania",
+      content: "Na rozdiel od konkurencie, ktorá potrebuje týždne alebo mesiace, my dokážeme vytvoriť a spustiť váš AI chatbot za rekordných 3-5 dní. Celý proces je optimalizovaný pre rýchlosť a efektívnosť - od prvého kontaktu po funkčný chatbot na vašej stránke.",
+      keywords: ["rýchlo", "3-5 dní", "rekordne", "efektívne", "optimalizované", "konkurencia", "týždne", "mesiace"]
+    },
+    {
+      id: "premium-features-detailed",
+      category: "pricing",
+      title: "Detailný popis prémiových funkcií",
+      content: "Prémiové funkcie za €50/funkcia jednorazovo: 1) Vyhľadávanie vo vašej databáze - bot nájde konkrétne produkty/služby (napr. dostupné autá), 2) Pokročilé integrácie - prepojenie s Google Sheets, CRM, rezervačným systémom, 3) Multijazyčný režim - napr. slovenčina + angličtina, 4) Funkcie podľa vašej potreby - čokoľvek, čo potrebujete pre svoj biznis.",
+      keywords: ["prémiové funkcie", "€50", "databáza", "vyhľadávanie", "integrácie", "multijazyčný", "na mieru", "CRM", "Google Sheets"]
+    },
+    {
+      id: "consultation-process",
+      category: "booking",
+      title: "Ako prebieha konzultácia",
+      content: "Konzultácia prebieha formou 30-minútového online hovoru, kde si vypočujeme vaše potreby a predstavíme možnosti AI Power platformy. Počas stretnutia vytvoríme spolu stratégiu pre váš chatbot, prediskutujeme špecifické požiadavky a ukážeme konkrétne príklady. Konzultácia je bezplatná a nezáväzná.",
+      keywords: ["konzultácia", "30 minút", "online hovor", "bezplatná", "nezáväzná", "stratégia", "požiadavky", "príklady"]
+    },
+    {
+      id: "company-mission",
+      category: "company",
+      title: "Naše poslanie a vízia",
+      content: "Sme slovenská agentúra špecializujúca sa na tvorbu AI chatbotov na mieru. Naše poslanie je vytvoriť vám inteligentného asistenta, ktorý hovorí vaším jazykom a pozná vaše podnikanie. Veríme, že každý biznis potrebuje AI chatbota pre lepšiu komunikáciu so zákazníkmi a automatizáciu procesov.",
+      keywords: ["poslanie", "vízia", "slovenská agentúra", "na mieru", "váš jazyk", "pozná podnikanie", "každý biznis"]
+    },
+    {
+      id: "gdpr-compliance",
+      category: "legal",
+      title: "GDPR a ochrana údajov",
+      content: "Sme plne v súlade s GDPR nariadeniami a zásadami ochrany súkromia. Všetky údaje spracovávame bezpečne a transparentne. Naše chatboty sú navrhnuté s ohľadom na ochranu osobných údajov a súkromie používateľov. Poskytujeme aj newsletter pre najnovšie informácie o AI technológiách.",
+      keywords: ["GDPR", "ochrana údajov", "súkromie", "bezpečne", "transparentne", "newsletter", "AI technológie"]
+    },
+    {
+      id: "slovak-focus",
+      category: "advantages",
+      title: "Zameranie na slovenský trh",
+      content: "AI chatboty pre slovenské firmy - personalizované, bezpečné a jednoducho integrovateľné riešenia. Rozumieme špecifikám slovenského trhu, kultúre a jazyku. Poskytujeme osobný prístup a podporu v slovenčine, čo nás odlišuje od medzinárodných konkurentov.",
+      keywords: ["slovenské firmy", "slovenský trh", "kultúra", "jazyk", "osobný prístup", "slovenčina", "konkurenti", "medzinárodní"]
     }
   ]
 };

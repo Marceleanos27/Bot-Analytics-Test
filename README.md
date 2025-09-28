@@ -11,14 +11,29 @@ Inteligentný chatbot s implementovaným RAG (Retrieval-Augmented Generation) sy
 - **Skórovanie relevancie** pre presnejšie výsledky
 - **Automatické pridávanie zdrojov** k odpovediam
 
-### 2. Databáza znalostí
-- Výhody AI chatbotov
-- Proces implementácie
-- Cenové informácie
-- Technické integrácie
-- Podpora a údržba
-- Možnosti prispôsobenia
-- Rezervácia konzultácií
+### 2. Optimalizovaná databáza znalostí
+Kompletne refaktorovaná štruktúra zameraná na RAG:
+
+**Knowledge Base kategórie (19 záznamov):**
+- `benefits` - Výhody AI chatbotov (štatistiky 24+h, 100+ leadov, 1k+ konverzií)
+- `process` - Proces implementácie (3-5 dní, demo, meeting, integrácia)
+- `pricing` - Cenové informácie (€300 + €50/mes, prémiové funkcie €50)
+- `technical` - Technické integrácie (jednoduchý script, 5 min integrácia)
+- `support` - Podpora a údržba
+- `customization` - Možnosti prispôsobenia
+- `booking` - Rezervácia konzultácií (30 min online, bezplatné)
+- `company` - Informácie o firme a poslanie
+- `contact` - Kontaktné údaje
+- `services` - Prehľad služieb
+- `advantages` - Konkurenčné výhody (slovenský trh, kultúra)
+- `clients` - Cieľoví klienti
+- `portfolio` - Úspešné implementácie (60% menej hovorov)
+- `legal` - GDPR a ochrana údajov
+
+**Základné firemné údaje:**
+- Kontaktné informácie (telefón, email, web, Calendly)
+- Pracovné hodiny
+- Lokácia
 
 ### 3. Rozšírené funkcie
 - **Quick replies** pre časté otázky
@@ -65,10 +80,32 @@ vercel dev
 6. **API call**: Odoslanie dotazu s kontextom na AI
 7. **Odpoveď**: Vrátenie odpovede so zdrojmi
 
-## Rozšírenie knowledge base
+## Štruktúra databázy
 
-Pre pridanie nových informácií do `database.js`:
+### Nová optimalizovaná štruktúra:
+```javascript
+window.aiPowerData = {
+  // Základné firemné informácie
+  company: {
+    name: "AI Power",
+    founded: 2025,
+    founder: "Marcel Lehocky",
+    location: "Bratislava, Slovensko",
+    website: "https://www.aipower.site",
+    email: "info@aipower.site", 
+    phone: "+421 904 603 171",
+    calendly: "https://calendly.com/..."
+  },
+  
+  // Pracovné hodiny pre quick replies
+  workingHours: { ... },
+  
+  // RAG Knowledge Base (13 záznamov)
+  knowledgeBase: [ ... ]
+}
+```
 
+### Pridanie nových informácií:
 ```javascript
 {
   id: "unique-id",
@@ -78,6 +115,12 @@ Pre pridanie nových informácií do `database.js`:
   keywords: ["kľúčové", "slová", "pre", "vyhľadávanie"]
 }
 ```
+
+### Výhody novej štruktúry:
+- ✅ **Zjednodušená** - Iba potrebné údaje
+- ✅ **RAG-optimalizovaná** - Lepšie vyhľadávanie
+- ✅ **Škálovateľná** - Jednoduché pridávanie obsahu
+- ✅ **Konzistentná** - Jednotná štruktúra pre všetky informácie
 
 ## API Environment variables
 
